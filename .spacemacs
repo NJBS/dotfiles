@@ -96,8 +96,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   dotspacemacs-default-font '("Consolas"
+                               :size 13 ;; 13 for 1080p, 24 for surface-pro
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -246,6 +246,9 @@ layers configuration. You are free to put any user code."
   (setq auto-completion-enable-help-tooltip t)
   ;; add snippets to auto-complete
   (setq auto-completion-enable-snippets-in-popup t)
+
+  ;; Remove trailing whitespace on save
+  (add-to-list 'write-file-functions 'delete-trailing-whitespace)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
