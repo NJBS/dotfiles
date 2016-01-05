@@ -96,8 +96,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Consolas"
-                               :size 13 ;; 13 for 1080p, 24 for surface-pro
+   dotspacemacs-default-font `("Consolas"
+                               :size ,(if (> (x-display-pixel-height) 1080) 24 13) ;; 13 for 1080p, 24 for surface
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
