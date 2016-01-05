@@ -1,0 +1,125 @@
+#
+# bspwm hotkeys
+#
+
+
+# rotate binary tree
+super + grave
+	bspc desktop -R 90
+
+# exit session
+super + alt + Escape
+	bspc quit
+
+# close window
+super + w
+	bspc window -c
+
+super + t
+	bspc desktop -l next
+
+super + b
+	bspc desktop -B
+
+super + {s,f}
+	bspc window -t {floating,fullscreen}
+
+super + {apostrophe,Tab}
+	bspc {window,desktop} -f last
+
+super + {o,i}
+	bspc control --record-history off; \
+	bspc window {older,newer} -f; \
+	bspc control --record-history on
+
+super + y
+	bspc window -w last.manual
+
+super + m
+	bspc window -s biggest
+
+super + {_,shift + }{Left,Down,Up,Right}
+	bspc window -{f,s} {left,down,up,right}
+
+super + {_,shift + }c
+	bspc window -f {next,prev}
+
+super + {comma,period}
+	bspc desktop -C {backward,forward}
+
+super + bracket{left,right}
+	bspc desktop -f {prev,next}
+
+super + ctrl + {Left,Down,Up,Right}
+	bspc window -p {left,down,up,right}
+
+super + ctrl + {_,shift + }space
+	bspc {window -p cancel,desktop -c}
+
+super + alt + {Left,Down,Up,Right}
+	bspc window -e {left -10,down +10,up -10,right +10}
+
+super + alt + shift + {Left,Down,Up,Right}
+	bspc window -e {right -10,up +10,down -10,left +10}
+
+super + ctrl + {1-9}
+	bspc window -r 0.{1-9}
+
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,window -d} ^{1-9,10}
+
+~button1
+	bspc pointer -g focus
+
+super + button{1-3}
+	bspc pointer -g {move,resize_side,resize_corner}
+
+super + !button{1-3}
+	bspc pointer -t %i, %i
+
+super + @button{1-3}
+	bspc pointer -u
+
+# increase window gaps (meta + scroll up)
+super + button{4}
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` + 5))
+
+# decrease window gaps (meta + scroll down)
+super + button{5}
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` - 5))
+
+#
+# wm independent hotkeys
+#
+
+# open file manager in new urxvt window
+super + e
+	urxvtc -e "ranger"
+
+# open web browser.  temporary, change this to something more intuitive later
+super + F
+	firefox
+
+# lock screen
+ctrl + alt + l
+	i3lock -f -r 6 -s 15
+
+# open terminal
+super + Return
+	urxvtc
+
+# open dmenu to run other stuff
+super + space
+	dmenu_run -i -h 30 -p ">" -nb "#282828" -nf "#ebdbb2" -sb "#458588" -sf "#ebdbb2" -fn "xft:Source\ Code\ Pro\ Medium:size=10"
+
+# volume up
+XF86Audio{LowerVolume,RaiseVolume}
+	amixer -q sset Master 3%{-,+}
+
+# volume down
+XF86AudioMute
+	amixer -q set Master toggle
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd

@@ -1,0 +1,126 @@
+#! /bin/zsh
+
+. panel_colors
+
+PANEL_FIFO=/tmp/panel-fifo
+PANEL_HEIGHT=30
+PANEL_FONT_FAMILY="Source Sans Pro:size=11"
+ICON_FONT="FontAwesome:size=13"
+ICON_FONT2="fontcustom:size=15"
+
+if [ $(pgrep -cx panel) -gt 1 ] ; then
+	printf "%s\n" "The panel is already running." >&2
+	exit 1
+fi
+
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
+bspc config top_padding $PANEL_HEIGHT
+bspc control --subscribe > "$PANEL_FIFO" &
+
+# window title
+# xtitle -sf 'T%s' > "$PANEL_FIFO" &
+
+# clock
+while true;
+	do
+		echo 'C\uf017' $(date +"%l:%M %p");
+	sleep 30;
+done > "$PANEL_FIFO" &
+
+# date
+while true;
+do echo 'D\uf073' $(date +'%b %d')
+	sleep 60
+done > $PANEL_FIFO &
+
+# battery
+while true;
+do
+BATT_LEVEL=$(acpi -b | grep -o '[[:digit:]]\+%' | sed 's/%//')
+	if [ $BATT_LEVEL -ge 80 ]
+	then
+		echo 'B\uf240' $BATT_LEVEL%
+	elif [ $BATT_LEVEL -ge 60 -a $BATT_LEVEL -lt 80 ]
+	then
+		echo 'B\uf241' $BATT_LEVEL%
+	elif [ $BATT_LEVEL -ge 40 -a $BATT_LEVEL -lt 60 ]
+	then
+		echo 'B\uf242' $BATT_LEVEL%
+	elif [ $BATT_LEVEL -ge 20 -a $BATT_LEVEL -lt 40 ]
+	then
+		echo 'B\uf243' $BATT_LEVEL%
+	elif [ $BATT_LEVEL $BATT_LEVEL -lt 20 ]
+	then
+		echo 'B\uf244' $BATT_LEVEL%
+	fi
+	sleep 30;
+done > "$PANEL_FIFO" &
+
+# alsa volume
+while true;
+do
+ALSA_VOLUME=$(amixer get Master | grep 'Mono: Playback' | grep -o '...%' | sed 's/\[//' | sed 's/%//' | sed 's/ //')
+ALSA_STATE=$(amixer get Master | grep 'Mono: Playback' | grep -o '\[on]')
+
+if [ $ALSA_STATE ]
+then
+	if [ $ALSA_VOLUME -ge 70 ]
+	then
+		echo V'\uf028' $ALSA_VOLUME
+	fi
+	if [ $ALSA_VOLUME -gt 0 -a $ALSA_VOLUME -lt 70 ]
+	then
+		echo V'\uf027' $ALSA_VOLUME
+	fi
+	if [ $ALSA_VOLUME -eq 0 ]
+	then
+		echo V'\uf026' $ALSA_VOLUME
+	fi
+	else
+		echo V'\uf026' $ALSA_VOLUME
+	fi
+	sleep 1.0
+done > $PANEL_FIFO &
+
+
+# wifi
+while true;
+do
+WIFI_SSID=$(iw wlp2s0 link | grep 'SSID' | sed 's/SSID: //' | sed 's/\t//')
+# WIFI_SIGNAL=$(iw wlp2s0 link | grep 'signal' | sed 's/signal: //' | sed 's/ dBm//' | sed 's/\t//')
+	# echo L'\uf1eb' $WIFI_SSID '|' $WIFI_SIGNAL 'dBm'
+	echo L'\uf1eb' $WIFI_SSID
+	sleep 10
+done > $PANEL_FIFO &
+
+# music controls
+while true;
+do
+	SONG_NAME=$(mpc current)
+	if [[ -z $(mpc current) ]]
+	then
+		# no music in playlist, or mpd is not running
+		echo "R%{F$COLOR_INACTIVE_MONITOR_FG}%{T3}%{A:mpc listall | mpc add; mpc shuffle; mpc play:}%{A3:mpd:}\uf19c  \uf198  \uf17c%{A}%{A}%{T1}%{F-}"
+	else
+		if [[ -n $(mpc status | grep paused) ]]
+		then
+			# music is paused
+			echo "R%{F$COLOR_INACTIVE_MONITOR_FG}%{A}%{A:mpc play:}%{A3:mpc clear:}$SONG_NAME%{A}%{A}%{T1}%{F-}"
+		else
+			# music is playing
+			echo "R%{F$COLOR_FOCUSED_OCCUPIED_FG}%{A}%{A:mpc pause:}%{A3:mpc clear:}$SONG_NAME%{A}%{A}%{T1}%{F-}"
+		fi
+	fi
+	sleep 1.0
+done > $PANEL_FIFO &
+
+
+. panel_colors
+
+cat "$PANEL_FIFO" | panel_bar | lemonbar -g x$PANEL_HEIGHT -f "$PANEL_FONT_FAMILY" -f "$ICON_FONT" -f "$ICON_FONT2" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -u 2 | zsh &
+
+wait
