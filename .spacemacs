@@ -249,6 +249,9 @@ layers configuration. You are free to put any user code."
 
   ;; Remove trailing whitespace on save
   (add-to-list 'write-file-functions 'delete-trailing-whitespace)
+
+  ;; powerline separator config
+  (setq powerline-default-separator 'arrow)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
