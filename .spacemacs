@@ -27,6 +27,7 @@ values."
      better-defaults
      emacs-lisp
      git
+     github
      markdown
      org
      c-c++
