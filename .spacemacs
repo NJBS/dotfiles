@@ -253,6 +253,10 @@ layers configuration. You are free to put any user code."
 
   ;; powerline separator config
   (setq powerline-default-separator 'arrow)
+
+  ;; Keep server running and open welcome screen on new clients
+  (setq-default dotspacemacs-persistent-server t)
+  (setq initial-buffer-choice (lambda () (get-buffer spacemacs-buffer-name)))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
