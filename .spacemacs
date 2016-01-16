@@ -35,6 +35,7 @@ values."
      latex
      shell
      shell-scripts
+     ;; themes-megapack
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -221,12 +222,12 @@ layers configuration. You are free to put any user code."
   (add-hook 'c++-mode-hook
             (lambda ()
               (setq flycheck-clang-language-standard "c++11")
-              (setq company-clang-arguments '("-std=c++11"))
+              (setq company-clang-arguments '("-std=c++11 -Weverything"))
               (setq flycheck-clang-include-path '("../include" "./include" "." "../../include" "../inc" "../../inc"))))
   (add-hook 'c-mode-hook
             (lambda ()
               (setq flycheck-clang-language-standard "gnu99")
-              (setq company-clang-arguments '("-std=gnu99"))
+              (setq company-clang-arguments '("-std=gnu99 -Weverything"))
               (setq flycheck-clang-include-path '("../include" "./include" "." "../../include" "../inc" "../../inc"))))
 
   ;; start maximized
@@ -253,6 +254,9 @@ layers configuration. You are free to put any user code."
 
   ;; powerline separator config
   (setq powerline-default-separator 'arrow)
+
+  ;; TODO REMOVE THIS TEMP-FIX WHEN THE CORE-HELM ISSUE IS FIXED
+  (setq helm-echo-input-in-header-line nil)
 
   ;; Keep server running and open welcome screen on new clients
   (setq-default dotspacemacs-persistent-server t)
