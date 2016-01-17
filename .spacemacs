@@ -33,6 +33,7 @@ values."
      c-c++
      python
      latex
+     racket
      shell
      shell-scripts
      ;; themes-megapack
