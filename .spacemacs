@@ -262,6 +262,16 @@ layers configuration. You are free to put any user code."
   ;; Keep server running and open welcome screen on new clients
   (setq-default dotspacemacs-persistent-server t)
   (setq initial-buffer-choice (lambda () (get-buffer spacemacs-buffer-name)))
+
+  ;; Increase default garbage collection threshold for minibuffers
+  (defun my-minibuffer-setup-hook ()
+    (setq gc-cons-threshold most-positive-fixnum))
+
+  (defun my-minibuffer-exit-hook ()
+    (setq gc-cons-threshold 800000))
+
+  (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
+  (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
