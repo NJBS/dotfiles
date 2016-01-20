@@ -307,6 +307,10 @@ layers configuration. You are free to put any user code."
   ;; Keep server running and open welcome screen on new clients
   (setq-default dotspacemacs-persistent-server t)
   (setq initial-buffer-choice (lambda () (get-buffer spacemacs-buffer-name)))
+
+  ;; Use tab to complete exclusively
+  (setq auto-completion-return-key-behavior nil)
+  (setq auto-completion-tab-key-behavior 'complete)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
