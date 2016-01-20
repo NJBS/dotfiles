@@ -238,7 +238,6 @@ layers configuration. You are free to put any user code."
   (setq compilation-scroll-output t)
   ;; scroll to first error
   (setq compilation-scroll-output 'first-error)
-  (setq eclimd-wait-for-process nil)
 
   ;; TODO highlighting
   (defun highlight-todos ()
