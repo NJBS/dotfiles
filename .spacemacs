@@ -117,7 +117,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font `("Consolas"
-                               :size ,(if (> (x-display-pixel-height) 1080) 28 13) ;; 13 for 1080p, 24 for surface
+                               :size ,(if (> (x-display-pixel-height) 1080) 28 13) ;; 13 for 1080p, 28 for surface
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
