@@ -268,22 +268,22 @@ layers configuration. You are free to put any user code."
   ;; syntax check
   (add-hook 'c++-mode-hook
             (lambda ()
-              (setq flycheck-clang-language-standard "c++11")
-              (setq company-clang-arguments '("-std=c++11 -Weverything"))
-              (setq flycheck-clang-include-path '("../include" "./include" "." "../../include" "../inc" "../../inc"))))
+              (setq-default flycheck-clang-language-standard "c++11")
+              (setq-default company-clang-arguments '("-std=c++11 -Weverything"))
+              (setq-default flycheck-clang-include-path '("../include" "./include" "." "../../include" "../inc" "../../inc"))))
   (add-hook 'c-mode-hook
             (lambda ()
-              (setq flycheck-clang-language-standard "gnu99")
-              (setq company-clang-arguments '("-std=gnu99 -Weverything"))
-              (setq flycheck-clang-include-path '("../include" "./include" "." "../../include" "../inc" "../../inc"))))
+              (setq-default flycheck-clang-language-standard "gnu99")
+              (setq-default company-clang-arguments '("-std=gnu99 -Weverything"))
+              (setq-default flycheck-clang-include-path '("../include" "./include" "." "../../include" "../inc" "../../inc"))))
 
   ;; start maximized
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
   ;; scroll compilation output
-  (setq compilation-scroll-output t)
+  (setq-default compilation-scroll-output t)
   ;; scroll to first error
-  (setq compilation-scroll-output 'first-error)
+  (setq-default compilation-scroll-output 'first-error)
 
   ;; TODO highlighting
   (defun highlight-todos ()
@@ -291,23 +291,26 @@ layers configuration. You are free to put any user code."
   (add-hook 'prog-mode-hook 'highlight-todos)
 
   ;; autocomplete docstring tooltips
-  (setq auto-completion-enable-help-tooltip t)
+  (setq-default auto-completion-enable-help-tooltip t)
   ;; add snippets to auto-complete
-  (setq auto-completion-enable-snippets-in-popup t)
+  (setq-default auto-completion-enable-snippets-in-popup t)
 
   ;; Remove trailing whitespace on save
   (add-to-list 'write-file-functions 'delete-trailing-whitespace)
 
   ;; powerline separator config
-  (setq powerline-default-separator 'arrow)
+  (setq-default powerline-default-separator 'arrow)
 
   ;; Keep server running and open welcome screen on new clients
   (setq-default dotspacemacs-persistent-server t)
-  (setq initial-buffer-choice (lambda () (get-buffer spacemacs-buffer-name)))
+  (setq-default initial-buffer-choice (lambda () (get-buffer spacemacs-buffer-name)))
 
   ;; Use tab to complete exclusively
-  (setq auto-completion-return-key-behavior nil)
-  (setq auto-completion-tab-key-behavior 'complete)
+  (setq-default auto-completion-return-key-behavior nil)
+  (setq-default auto-completion-tab-key-behavior 'complete)
+
+  ;; Turn off Latex auto formating source code
+  (setq-default font-latex-fontify-script nil)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
