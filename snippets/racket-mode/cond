@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: cond
+# key: cond
+# binding: direct-keybinding
+# --
+(cond
+  [(${1:pred1}) ${2:expr1}]
+  [(${3:pred2}) ${4:expr2}]
+  [else $0])
