@@ -269,12 +269,12 @@ layers configuration. You are free to put any user code."
   (add-hook 'c++-mode-hook
             (lambda ()
               (setq-default flycheck-clang-language-standard "c++11")
-              (setq-default company-clang-arguments '("-std=c++11 -Weverything"))
+              (setq-default company-clang-arguments '("-Weverything"))
               (setq-default flycheck-clang-include-path '("../include" "./include" "." "../../include" "../inc" "../../inc"))))
   (add-hook 'c-mode-hook
             (lambda ()
               (setq-default flycheck-clang-language-standard "gnu99")
-              (setq-default company-clang-arguments '("-std=gnu99 -Weverything"))
+              (setq-default company-clang-arguments '("-Weverything"))
               (setq-default flycheck-clang-include-path '("../include" "./include" "." "../../include" "../inc" "../../inc"))))
 
   ;; start maximized
