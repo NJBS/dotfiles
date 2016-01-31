@@ -31,6 +31,7 @@ values."
      markdown
      org
      c-c++
+     semantic
      python
      latex
      racket
