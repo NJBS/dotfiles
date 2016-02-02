@@ -312,6 +312,11 @@ layers configuration. You are free to put any user code."
 
   ;; Turn off Latex auto formating source code
   (setq-default font-latex-fontify-script nil)
+
+  ;; Turn off smart-paran auto-highlighting
+  (setq-default sp-highlight-pair-overlay nil)
+  (setq-default sp-highlight-wrap-overlay nil)
+  (setq-default sp-highlight-wrap-tag-overlay nil)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
