@@ -35,6 +35,7 @@ values."
      python
      latex
      racket
+     cscope
      shell
      shell-scripts
      ;; themes-megapack
