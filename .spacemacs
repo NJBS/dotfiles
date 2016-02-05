@@ -264,6 +264,9 @@ layers configuration. You are free to put any user code."
   ;; c/c++ style
   (setq-default c-default-style "bsd" c-basic-offset 4)
 
+  ;; clang support
+  (setq-default c-c++-enable-clang-support t)
+
   ;; windows find
   (setq-default projectile-indexing-method 'alien)
 
@@ -318,6 +321,9 @@ layers configuration. You are free to put any user code."
   (setq-default sp-highlight-pair-overlay nil)
   (setq-default sp-highlight-wrap-overlay nil)
   (setq-default sp-highlight-wrap-tag-overlay nil)
+
+  ;; Change org bullets
+  (setq-default org-bullets-bullet-list '("◉" "○" "◆" "✿"))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
