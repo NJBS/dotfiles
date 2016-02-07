@@ -324,6 +324,16 @@ layers configuration. You are free to put any user code."
 
   ;; Change org bullets
   (setq-default org-bullets-bullet-list '("◉" "○" "◆" "✿"))
+
+  ;; Make the compilation window automatically disappear
+  (setq compilation-finish-functions
+        (lambda (buf str)
+          (if (null (string-match ".*exited abnormally.*" str))
+              (progn
+                (run-at-time
+                 "2 sec" nil 'delete-windows-on
+                 (get-buffer-create "*compilation*"))
+                (message "No Compilation Errors")))))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
