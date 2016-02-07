@@ -310,9 +310,9 @@ layers configuration. You are free to put any user code."
   (setq-default dotspacemacs-persistent-server t)
   (setq-default initial-buffer-choice (lambda () (get-buffer spacemacs-buffer-name)))
 
-  ;; Use tab to complete exclusively
+  ;; Use ctrl + l to complete exclusively
   (setq-default auto-completion-return-key-behavior nil)
-  (setq-default auto-completion-tab-key-behavior 'complete)
+  (setq-default auto-completion-tab-key-behavior nil)
 
   ;; Turn off Latex auto formating source code
   (setq-default font-latex-fontify-script nil)
