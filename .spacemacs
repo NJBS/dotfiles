@@ -36,6 +36,7 @@ values."
      latex
      racket
      cscope
+     evil-snipe
      shell
      shell-scripts
      ;; themes-megapack
