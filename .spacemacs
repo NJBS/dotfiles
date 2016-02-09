@@ -335,6 +335,9 @@ layers configuration. You are free to put any user code."
                  "2 sec" nil 'delete-windows-on
                  (get-buffer-create "*compilation*"))
                 (message "No Compilation Errors")))))
+
+  ;; Disable lockfiles
+  (setq create-lockfiles nil)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
