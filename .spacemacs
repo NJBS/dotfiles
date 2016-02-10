@@ -37,7 +37,7 @@ values."
      racket
      ranger
      cscope
-     evil-snipe
+     ;; evil-snipe
      shell
      shell-scripts
      ;; themes-megapack
