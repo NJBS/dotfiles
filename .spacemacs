@@ -338,6 +338,9 @@ layers configuration. You are free to put any user code."
 
   ;; Disable lockfiles
   (setq create-lockfiles nil)
+
+  ;; Quick character jump
+  (spacemacs/set-leader-keys "SPC" 'avy-goto-char-timer)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
