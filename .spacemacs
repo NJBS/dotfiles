@@ -35,6 +35,7 @@ values."
      python
      latex
      racket
+     ranger
      cscope
      evil-snipe
      shell
