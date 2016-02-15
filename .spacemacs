@@ -353,5 +353,6 @@ layers configuration. You are free to put any user code."
     "fb" 'clang-format-buffer
     "fr" 'clang-format-region)
 )
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
