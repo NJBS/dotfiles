@@ -1,0 +1,25 @@
+﻿---
+BasedOnStyle: LLVM
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: 'true'
+AlignEscapedNewlinesLeft: 'true'
+AlignTrailingComments: 'true'
+AllowAllParametersOfDeclarationOnNextLine: 'true'
+AllowShortBlocksOnASingleLine: 'false'
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: 'false'
+AllowShortLoopsOnASingleLine: 'false'
+AlwaysBreakAfterDefinitionReturnType: All
+AlwaysBreakAfterReturnType: All
+AlwaysBreakTemplateDeclarations: 'true'
+BreakBeforeBraces: Allman
+ColumnLimit: '0'
+IndentWidth: '4'
+MaxEmptyLinesToKeep: '2'
+SpaceAfterCStyleCast: 'false'
+SpaceBeforeAssignmentOperators: 'true'
+SpaceBeforeParens: ControlStatements
+Standard: Auto
+TabWidth: '4'
+
+...
