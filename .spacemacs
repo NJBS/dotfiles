@@ -23,31 +23,27 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     ;; evil-snipe
+     ;; ranger
+     ;; themes-megapack
      auto-completion
      better-defaults
+     c-c++
+     cscope
      emacs-lisp
      git
      github
+     latex
      markdown
      org
-     c-c++
-     semantic
      python
-     latex
      racket
-     cscope
-     ;; ranger
-     ;; evil-snipe
+     semantic
      shell
      shell-scripts
-     ;; themes-megapack
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
      syntax-checking
-     version-control
      unimpaired
+     version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
