@@ -350,13 +350,13 @@ layers configuration. You are free to put any user code."
     "fr" 'clang-format-region)
 
   ;; Windows command-line bindings
-  (defun start-cmd ()
-    "Start cmd in current directory"
+  (defun start-cmder ()
+    "Start cmder in current directory"
     (interactive)
-    (let ((proc (start-process "cmd" nil "cmd.exe" "/C" "start" "cmd.exe")))
+    (let ((proc (start-process "cmder" nil "cmder.exe" "/START" default-directory)))
       (set-process-query-on-exit-flag proc nil)))
 
-  (spacemacs/set-leader-keys "o c" 'start-cmd)
+  (spacemacs/set-leader-keys "o c" 'start-cmder)
 
   ;; Windows explorer bindings
   (defun start-explorer ()
