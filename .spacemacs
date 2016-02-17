@@ -366,6 +366,9 @@ layers configuration. You are free to put any user code."
       (set-process-query-on-exit-flag proc nil)))
 
   (spacemacs/set-leader-keys "o e" 'start-explorer)
+
+  ;; Windows performance improvement
+  (setq w32-get-true-file-attributes nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
