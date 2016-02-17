@@ -348,7 +348,25 @@ layers configuration. You are free to put any user code."
   (spacemacs/set-leader-keys-for-major-mode 'c++-mode
     "fb" 'clang-format-buffer
     "fr" 'clang-format-region)
-)
+
+  ;; Windows command-line bindings
+  (defun start-cmd ()
+    "Start cmd in current directory"
+    (interactive)
+    (let ((proc (start-process "cmd" nil "cmd.exe" "/C" "start" "cmd.exe")))
+      (set-process-query-on-exit-flag proc nil)))
+
+  (spacemacs/set-leader-keys "o c" 'start-cmd)
+
+  ;; Windows explorer bindings
+  (defun start-explorer ()
+    "Start explorer in current directory"
+    (interactive)
+    (let ((proc (start-process "explorer" nil "explorer.exe" ".")))
+      (set-process-query-on-exit-flag proc nil)))
+
+  (spacemacs/set-leader-keys "o e" 'start-explorer)
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
