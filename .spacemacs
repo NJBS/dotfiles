@@ -369,6 +369,10 @@ layers configuration. You are free to put any user code."
 
   ;; Windows performance improvement
   (setq w32-get-true-file-attributes nil)
+
+  ;; Better pdf viewing
+  (setq doc-view-resolution 144)
+  (setq doc-view-continuous t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
