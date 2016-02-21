@@ -25,7 +25,6 @@ values."
      ;; ----------------------------------------------------------------
      ;; cscope
      ;; evil-snipe
-     ;; ranger
      ;; themes-megapack
      auto-completion
      better-defaults
@@ -39,6 +38,7 @@ values."
      org
      python
      racket
+     ranger
      semantic
      shell
      shell-scripts
@@ -329,7 +329,7 @@ layers configuration. You are free to put any user code."
           (if (null (string-match ".*exited abnormally.*" str))
               (progn
                 (run-at-time
-                 "2 sec" nil 'delete-windows-on
+                 "1 sec" nil 'delete-windows-on
                  (get-buffer-create "*compilation*"))
                 (message "No Compilation Errors")))))
 
