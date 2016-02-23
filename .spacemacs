@@ -374,6 +374,9 @@ layers configuration. You are free to put any user code."
   ;; Better pdf viewing
   (setq doc-view-resolution 144)
   (setq doc-view-continuous t)
+
+  ;; Stop python from complaining
+  (setq python-shell-prompt-detect-failure-warning nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
