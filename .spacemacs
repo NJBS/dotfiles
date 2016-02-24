@@ -42,6 +42,7 @@ values."
      semantic
      shell
      shell-scripts
+     speed-reading
      syntax-checking
      unimpaired
      version-control
