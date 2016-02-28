@@ -378,6 +378,9 @@ layers configuration. You are free to put any user code."
 
   ;; Stop python from complaining
   (setq python-shell-prompt-detect-failure-warning nil)
+
+  ;; Enable caching of files in projectile searches
+  (setq projectile-enable-caching t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
