@@ -381,6 +381,10 @@ layers configuration. You are free to put any user code."
 
   ;; Enable caching of files in projectile searches
   (setq projectile-enable-caching t)
+
+  ;; Better next/prev error bindings
+  (spacemacs/set-leader-keys "o n" 'next-error)
+  (spacemacs/set-leader-keys "o p" 'previous-error)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
