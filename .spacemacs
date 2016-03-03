@@ -388,6 +388,8 @@ layers configuration. You are free to put any user code."
 
   ;; Quick ediff
   (spacemacs/set-leader-keys "o d" 'ediff-buffers)
+
+  (remove-hook 'ediff-quit-hook #'winner-undo)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
