@@ -385,6 +385,9 @@ layers configuration. You are free to put any user code."
   ;; Better next/prev error bindings
   (spacemacs/set-leader-keys "o n" 'next-error)
   (spacemacs/set-leader-keys "o p" 'previous-error)
+
+  ;; Quick ediff
+  (spacemacs/set-leader-keys "o d" 'ediff-buffers)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
