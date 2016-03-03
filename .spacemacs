@@ -274,12 +274,12 @@ layers configuration. You are free to put any user code."
             (lambda ()
               (setq flycheck-clang-language-standard "c++11")
               (setq company-clang-arguments '("-Weverything"))
-              (setq flycheck-clang-include-path '("../include" "./include" "." "../../include" "../inc" "../../inc"))))
+              (setq flycheck-clang-include-path '("../include" "./include" "." "../../include" "../inc" "../../inc" "C:/cygwin64/lib/gcc/x86_64-pc-cygwin/5.3.0/include/c++"))))
   (add-hook 'c-mode-hook
             (lambda ()
               (setq flycheck-clang-language-standard "gnu99")
               (setq company-clang-arguments '("-Weverything"))
-              (setq flycheck-clang-include-path '("../include" "./include" "." "../../include" "../inc" "../../inc"))))
+              (setq flycheck-clang-include-path '("../include" "./include" "." "../../include" "../inc" "../../inc" "C:/cygwin64/lib/gcc/x86_64-pc-cygwin/5.3.0/include"))))
 
   ;; start maximized
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
