@@ -387,6 +387,9 @@ layers configuration. You are free to put any user code."
 
   ;; Stop spacemacs from restoring windows when finished ediffing
   (remove-hook 'ediff-quit-hook #'winner-undo)
+
+  ;; Only look on current line when sniping
+  (setq evil-snipe-scope 'line)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
