@@ -24,12 +24,12 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; cscope
-     ;; evil-snipe
      ;; themes-megapack
      auto-completion
      better-defaults
      c-c++
      emacs-lisp
+     evil-snipe
      git
      github
      gtags
@@ -227,7 +227,7 @@ values."
    dotspacemacs-highlight-delimiters 'all
    ;; If non nil advises quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server nil
+   dotspacemacs-persistent-server t
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
@@ -256,20 +256,23 @@ in `dotspacemacs/user-config'."
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
-  ;; tab-width
-  (setq-default indent-tabs-mode nil)
-  (setq-default tab-width 4)
+  ;; Tab-width
+  (setq indent-tabs-mode nil)
+  (setq tab-width 4)
 
-  ;; c/c++ style
-  (setq-default c-default-style "bsd" c-basic-offset 4)
+  ;; Have projectile use linux find
+  (setq projectile-indexing-method 'alien)
 
-  ;; clang support
-  (setq-default c-c++-enable-clang-support t)
+  ;; Enable caching of files in projectile searches
+  (setq projectile-enable-caching t)
 
-  ;; windows find
-  (setq-default projectile-indexing-method 'alien)
+  ;; C/C++ style
+  (setq c-default-style "bsd" c-basic-offset 4)
 
-  ;; syntax check
+  ;; Clang support (clang-format & clang-complete snippets)
+  (setq c-c++-enable-clang-support t)
+
+  ;; Flycheck and clang arugments for syntax checking in C/C++
   (add-hook 'c++-mode-hook
             (lambda ()
               (setq flycheck-clang-language-standard "c++11")
@@ -281,50 +284,46 @@ layers configuration. You are free to put any user code."
               (setq company-clang-arguments '("-Weverything"))
               (setq flycheck-clang-include-path '("../include" "./include" "." "../../include" "../inc" "../../inc" "C:/cygwin64/lib/gcc/x86_64-pc-cygwin/5.3.0/include"))))
 
-  ;; start maximized
+  ;; Start all frames maximized
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-  ;; scroll compilation output
-  (setq-default compilation-scroll-output t)
-  ;; scroll to first error
-  (setq-default compilation-scroll-output 'first-error)
+  ;; Scroll compilation output to first error
+  (setq compilation-scroll-output t)
+  (setq compilation-scroll-output 'first-error)
 
   ;; TODO highlighting
   (defun highlight-todos ()
     (font-lock-add-keywords nil '(("\\<\\(NOTE\\|TODO\\|HACK\\|BUG\\):" 1 font-lock-warning-face t))))
   (add-hook 'prog-mode-hook 'highlight-todos)
 
-  ;; autocomplete docstring tooltips
-  (setq-default auto-completion-enable-help-tooltip t)
-  ;; add snippets to auto-complete
-  (setq-default auto-completion-enable-snippets-in-popup t)
+  ;; Autocomplete docstring tooltips
+  (setq auto-completion-enable-help-tooltip t)
 
   ;; Remove trailing whitespace on save
   (add-to-list 'write-file-functions 'delete-trailing-whitespace)
 
-  ;; powerline separator config
-  (setq-default powerline-default-separator 'arrow)
+  ;; Powerline separator config
+  (setq powerline-default-separator 'arrow)
 
-  ;; Keep server running and open welcome screen on new clients
-  (setq-default dotspacemacs-persistent-server t)
-  (setq-default initial-buffer-choice (lambda () (get-buffer spacemacs-buffer-name)))
+  ;; Open welcome screen on new frames
+  (setq initial-buffer-choice (lambda () (get-buffer spacemacs-buffer-name)))
 
   ;; Use ctrl + l to complete exclusively
-  (setq-default auto-completion-return-key-behavior nil)
-  (setq-default auto-completion-tab-key-behavior nil)
+  (setq auto-completion-return-key-behavior nil)
+  (setq auto-completion-tab-key-behavior nil)
 
   ;; Turn off Latex auto formating source code
-  (setq-default font-latex-fontify-script nil)
+  (setq font-latex-fontify-script nil)
 
   ;; Turn off smart-paran auto-highlighting
-  (setq-default sp-highlight-pair-overlay nil)
-  (setq-default sp-highlight-wrap-overlay nil)
-  (setq-default sp-highlight-wrap-tag-overlay nil)
+  (setq sp-highlight-pair-overlay nil)
+  (setq sp-highlight-wrap-overlay nil)
+  (setq sp-highlight-wrap-tag-overlay nil)
 
   ;; Change org bullets
-  (setq-default org-bullets-bullet-list '("◉" "○" "◆" "✿"))
+  (setq org-bullets-bullet-list '("◉" "○" "◆" "✿"))
 
-  ;; Make the compilation window automatically disappear
+  ;; Make the compilation window close automatically if no errors
   (setq compilation-finish-functions
         (lambda (buf str)
           (if (null (string-match ".*exited abnormally.*" str))
@@ -340,7 +339,7 @@ layers configuration. You are free to put any user code."
   ;; Quick character jump
   (spacemacs/set-leader-keys "SPC" 'avy-goto-char-2)
 
-  ;; clang-format style
+  ;; Clang-format style
   (setq clang-format-style "{BasedOnStyle: LLVM, AlignEscapedNewlinesLeft: true, AlignTrailingComments: true, AllowAllParametersOfDeclarationOnNextLine: true, AllowShortBlocksOnASingleLine: false, AllowShortFunctionsOnASingleLine: None, AllowShortIfStatementsOnASingleLine: false, AllowShortLoopsOnASingleLine: false, AlwaysBreakTemplateDeclarations: true, BreakBeforeBraces: Allman, ColumnLimit: 0, IndentCaseLabels: true, IndentWidth: 4, MaxEmptyLinesToKeep: 2, SpaceBeforeAssignmentOperators: true, SpaceBeforeParens: ControlStatements, Standard: Auto, TabWidth: 4}")
 
   ;; Bind clang-format functions
@@ -351,7 +350,7 @@ layers configuration. You are free to put any user code."
     "fb" 'clang-format-buffer
     "fr" 'clang-format-region)
 
-  ;; Windows command-line bindings
+  ;; Windows cmder bindings
   (defun start-cmder ()
     "Start cmder in current directory"
     (interactive)
@@ -369,18 +368,15 @@ layers configuration. You are free to put any user code."
 
   (spacemacs/set-leader-keys "o e" 'start-explorer)
 
-  ;; Windows performance improvement
+  ;; Windows performance improvement /I think/
   (setq w32-get-true-file-attributes nil)
 
-  ;; Better pdf viewing
+  ;; Better pdf viewing experience in doc-view
   (setq doc-view-resolution 144)
   (setq doc-view-continuous t)
 
-  ;; Stop python from complaining
+  ;; Stop python from complaining when opening a REPL
   (setq python-shell-prompt-detect-failure-warning nil)
-
-  ;; Enable caching of files in projectile searches
-  (setq projectile-enable-caching t)
 
   ;; Better next/prev error bindings
   (spacemacs/set-leader-keys "o n" 'next-error)
