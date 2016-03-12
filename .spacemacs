@@ -29,7 +29,6 @@ values."
      better-defaults
      c-c++
      emacs-lisp
-     evil-snipe
      git
      github
      gtags
@@ -392,8 +391,8 @@ you should place you code here."
   ;; Stop spacemacs from restoring windows when finished ediffing
   (remove-hook 'ediff-quit-hook #'winner-undo)
 
-  ;; Only look on current line when sniping
-  (setq evil-snipe-scope 'line)
+  ;; Quick server restart
+  (spacemacs/set-leader-keys "o s" 'server-start)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
