@@ -393,6 +393,9 @@ you should place you code here."
 
   ;; Quick server restart
   (spacemacs/set-leader-keys "o s" 'server-start)
+
+  ;; Override dired with ranger
+  (setq ranger-override-dired t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
