@@ -45,7 +45,6 @@ values."
      shell-scripts
      speed-reading
      syntax-checking
-     unimpaired
      version-control
      )
    ;; List of additional packages that will be installed without being
