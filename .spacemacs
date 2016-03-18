@@ -286,11 +286,15 @@ you should place you code here."
             (lambda ()
               (setq flycheck-clang-language-standard "c++11")
               (setq company-clang-arguments '("-Weverything"))
+              (setq company-c-headers-path-user '("../include" "./include" "." "../../include" "../inc" "../../inc"))
+              (setq company-c-headers-path-system '("C:/cygwin64/lib/gcc/x86_64-pc-cygwin/5.3.0/include/c++"))
               (setq flycheck-clang-include-path '("../include" "./include" "." "../../include" "../inc" "../../inc" "C:/cygwin64/lib/gcc/x86_64-pc-cygwin/5.3.0/include/c++"))))
   (add-hook 'c-mode-hook
             (lambda ()
               (setq flycheck-clang-language-standard "gnu99")
               (setq company-clang-arguments '("-Weverything"))
+              (setq company-c-headers-path-user '("../include" "./include" "." "../../include" "../inc" "../../inc"))
+              (setq company-c-headers-path-system '("C:/cygwin64/lib/gcc/x86_64-pc-cygwin/5.3.0/include"))
               (setq flycheck-clang-include-path '("../include" "./include" "." "../../include" "../inc" "../../inc" "C:/cygwin64/lib/gcc/x86_64-pc-cygwin/5.3.0/include"))))
 
   ;; Start all frames maximized
