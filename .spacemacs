@@ -36,6 +36,7 @@ values."
      github
      gtags
      html
+     java
      javascript
      latex
      markdown
@@ -414,6 +415,9 @@ you should place you code here."
 
   ;; Quick server restart
   (spacemacs/set-leader-keys "o s" 'server-start)
+
+  (setq eclim-eclipse-dirs "C:/eclipse")
+  (setq eclim-executable "C:/eclipse/eclim")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
