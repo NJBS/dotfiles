@@ -416,8 +416,12 @@ you should place you code here."
   ;; Quick server restart
   (spacemacs/set-leader-keys "o s" 'server-start)
 
+  ;; Java eclim setup
   (setq eclim-eclipse-dirs "C:/eclipse")
   (setq eclim-executable "C:/eclipse/eclim")
+
+  ;; No company delay in popups (NOTE: This may cause lag consider .1 instead)
+  (setq company-idle-delay 0)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
