@@ -12,7 +12,7 @@ values."
    ;; or `spacemacs'. (default 'spacemacs)
    dotspacemacs-distribution 'spacemacs
    ;; If non-nil layers with lazy install support are lazy installed.
-   ;; (default nil)
+   ;; (default t)
    dotspacemacs-enable-lazy-installation nil
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
@@ -152,7 +152,7 @@ values."
    ;; works in the GUI. (default nil)
    dotspacemacs-distinguish-gui-tab t
    ;; If non nil `Y' is remapped to `y$' in Evil states. (default nil)
-   dotspacemacs-remap-Y-to-y$ nil
+   dotspacemacs-remap-Y-to-y$ t
    ;; If non nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
    ;; (default nil)
    dotspacemacs-ex-substitute-global nil
@@ -420,8 +420,8 @@ you should place you code here."
   (setq eclim-eclipse-dirs "C:/eclipse")
   (setq eclim-executable "C:/eclipse/eclim")
 
-  ;; No company delay in popups (NOTE: This may cause lag consider .1 instead)
-  (setq company-idle-delay 0)
+  ;; No company delay in popups
+  (setq company-idle-delay 0.1)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
