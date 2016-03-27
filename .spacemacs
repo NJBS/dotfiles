@@ -420,8 +420,13 @@ you should place you code here."
   (setq eclim-eclipse-dirs "C:/eclipse")
   (setq eclim-executable "C:/eclipse/eclim")
 
-  ;; No company delay in popups
+  ;; 0.1 second company delay in popups
   (setq company-idle-delay 0.1)
+
+  ;; Ignore .dropbox.cache in projectile file searches
+  (with-eval-after-load 'projectile
+    (setq projectile-globally-ignored-directories
+          (append projectile-globally-ignored-directories '(".dropbox.cache"))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
