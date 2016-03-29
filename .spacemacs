@@ -382,7 +382,7 @@ you should place you code here."
     (let ((proc (start-process "cmder" nil "cmder.exe" "/START" default-directory)))
       (set-process-query-on-exit-flag proc nil)))
 
-  (spacemacs/set-leader-keys "o c" 'start-cmder)
+  (spacemacs/set-leader-keys "oc" 'start-cmder)
 
   ;; Windows explorer bindings
   (defun start-explorer ()
@@ -391,7 +391,7 @@ you should place you code here."
     (let ((proc (start-process "explorer" nil "explorer.exe" ".")))
       (set-process-query-on-exit-flag proc nil)))
 
-  (spacemacs/set-leader-keys "o e" 'start-explorer)
+  (spacemacs/set-leader-keys "oe" 'start-explorer)
 
   ;; Windows performance improvement /I think/
   (setq w32-get-true-file-attributes nil)
@@ -404,17 +404,17 @@ you should place you code here."
   (setq python-shell-prompt-detect-failure-warning nil)
 
   ;; Better next/prev error bindings
-  (spacemacs/set-leader-keys "o n" 'next-error)
-  (spacemacs/set-leader-keys "o p" 'previous-error)
+  (spacemacs/set-leader-keys "on" 'next-error)
+  (spacemacs/set-leader-keys "op" 'previous-error)
 
   ;; Quick ediff
-  (spacemacs/set-leader-keys "o d" 'ediff-buffers)
+  (spacemacs/set-leader-keys "od" 'ediff-buffers)
 
   ;; Stop spacemacs from restoring windows when finished ediffing
   (remove-hook 'ediff-quit-hook #'winner-undo)
 
   ;; Quick server restart
-  (spacemacs/set-leader-keys "o s" 'server-start)
+  (spacemacs/set-leader-keys "os" 'server-start)
 
   ;; Java eclim setup
   (setq eclim-eclipse-dirs "C:/eclipse")
@@ -427,6 +427,12 @@ you should place you code here."
   (with-eval-after-load 'projectile
     (setq projectile-globally-ignored-directories
           (append projectile-globally-ignored-directories '(".dropbox.cache"))))
+
+  ;; Actually finally maybe fix auto full screen on startup for clients?
+  (add-hook 'after-make-frame-functions
+            (lambda (frame)
+              (select-frame frame)
+              (run-with-idle-timer 1.0 nil 'spacemacs/toggle-maximize-frame-on)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
