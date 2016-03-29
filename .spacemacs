@@ -427,12 +427,6 @@ you should place you code here."
   (with-eval-after-load 'projectile
     (setq projectile-globally-ignored-directories
           (append projectile-globally-ignored-directories '(".dropbox.cache"))))
-
-  ;; Actually finally maybe fix auto full screen on startup for clients?
-  (add-hook 'after-make-frame-functions
-            (lambda (frame)
-              (select-frame frame)
-              (run-with-idle-timer 1.0 nil 'spacemacs/toggle-maximize-frame-on)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
