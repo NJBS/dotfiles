@@ -346,7 +346,8 @@ you should place you code here."
   (setq sp-highlight-wrap-tag-overlay nil)
 
   ;; Change org bullets
-  (setq org-bullets-bullet-list '("◉" "○" "◆" "✿"))
+  ;; (setq org-bullets-bullet-list '("◉" "○" "◆" "✿"))
+  (setq org-bullets-bullet-list '("•" "•" "•" "•"))
 
   ;; Make the compilation window close automatically if no errors
   (setq compilation-finish-functions
