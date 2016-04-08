@@ -422,6 +422,9 @@ you should place you code here."
   ;; 0.1 second company delay in popups
   (setq company-idle-delay 0.1)
 
+  ;; Override dired with ranger
+  (setq ranger-override-dired t)
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
