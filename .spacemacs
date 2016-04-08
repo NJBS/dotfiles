@@ -44,6 +44,7 @@ values."
      python
      racket
      ranger
+     rust
      semantic
      shell
      shell-scripts
