@@ -425,6 +425,8 @@ you should place you code here."
   ;; Override dired with ranger
   (setq ranger-override-dired t)
 
+  ;; TODO Contribute this back to upstream
+  (spacemacs|diminish helm-gtags-mode "Ⓖ" "G")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
