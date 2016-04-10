@@ -403,10 +403,6 @@ you should place you code here."
   ;; Stop python from complaining when opening a REPL
   (setq python-shell-prompt-detect-failure-warning nil)
 
-  ;; Better next/prev error bindings
-  (spacemacs/set-leader-keys "on" 'next-error)
-  (spacemacs/set-leader-keys "op" 'previous-error)
-
   ;; Quick ediff
   (spacemacs/set-leader-keys "od" 'ediff-buffers)
 
