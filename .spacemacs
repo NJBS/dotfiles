@@ -52,6 +52,7 @@ values."
      javascript
      latex
      markdown
+     ocaml
      org
      python
      racket
