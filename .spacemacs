@@ -340,6 +340,7 @@ you should place you code here."
 
   ;; Autocomplete docstring tooltips
   (setq auto-completion-enable-help-tooltip t)
+  (setq syntax-checking-enable-tooltips t)
 
   ;; Powerline separator config
   (setq powerline-default-separator 'arrow)
