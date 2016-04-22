@@ -378,7 +378,7 @@ you should place you code here."
   (setq create-lockfiles nil)
 
   ;; Quick character jump
-  (spacemacs/set-leader-keys "SPC" 'avy-goto-word-or-subword-1)
+  (spacemacs/set-leader-keys "SPC" 'avy-goto-char-timer)
 
   ;; Clang-format style
   (setq clang-format-style "{BasedOnStyle: LLVM, AlignEscapedNewlinesLeft: true, AlignTrailingComments: true, AllowAllParametersOfDeclarationOnNextLine: true, AllowShortBlocksOnASingleLine: false, AllowShortFunctionsOnASingleLine: None, AllowShortIfStatementsOnASingleLine: false, AllowShortLoopsOnASingleLine: false, AlwaysBreakTemplateDeclarations: true, BreakBeforeBraces: Allman, ColumnLimit: 0, IndentCaseLabels: true, IndentWidth: 4, MaxEmptyLinesToKeep: 2, SpaceBeforeAssignmentOperators: true, SpaceBeforeParens: ControlStatements, Standard: Auto, TabWidth: 4}")
