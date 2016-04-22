@@ -296,7 +296,7 @@ you should place you code here."
 
   ;; Tab-width
   (setq indent-tabs-mode nil)
-  (setq tab-width 4)
+  (setq-default tab-width 4)
 
   ;; Have projectile use linux find
   (setq projectile-indexing-method 'alien)
