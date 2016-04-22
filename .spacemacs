@@ -355,7 +355,7 @@ you should place you code here."
   ;; Turn off Latex auto formating source code
   (setq font-latex-fontify-script nil)
 
-  ;; Turn off smart-paran auto-highlighting
+  ;; Turn off smart-paren auto-highlighting
   (setq sp-highlight-pair-overlay nil)
   (setq sp-highlight-wrap-overlay nil)
   (setq sp-highlight-wrap-tag-overlay nil)
