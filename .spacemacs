@@ -444,6 +444,7 @@ you should place you code here."
   (with-eval-after-load 'tern
     (setq tern-command '("tern")))
 
+  (setq gc-cons-threshold 200000000)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
