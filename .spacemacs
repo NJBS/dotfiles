@@ -70,7 +70,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(vimish-fold)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(yasnippet)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -433,6 +433,13 @@ you should place you code here."
 
   ;; 0.1 second company delay in popups
   (setq company-idle-delay 0.1)
+
+  ;; Vimish fold bindings
+  (define-key evil-normal-state-map "zc" 'vimish-fold)
+  (define-key evil-normal-state-map "zC" 'vimish-fold-avy)
+  (define-key evil-normal-state-map "za" 'vimish-fold-toggle)
+  (define-key evil-normal-state-map "zd" 'vimish-fold-delete)
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
