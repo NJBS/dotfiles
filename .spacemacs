@@ -62,7 +62,6 @@ values."
      shell
      shell-scripts
      spacemacs-helm
-     speed-reading
      syntax-checking
      unimpaired
      version-control
