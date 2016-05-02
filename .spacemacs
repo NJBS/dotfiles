@@ -440,6 +440,10 @@ you should place you code here."
   (define-key evil-normal-state-map "za" 'vimish-fold-toggle)
   (define-key evil-normal-state-map "zd" 'vimish-fold-delete)
 
+  ;; Tern fix
+  (with-eval-after-load 'tern
+    (setq tern-command '("tern")))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
