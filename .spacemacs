@@ -330,12 +330,12 @@ you should place you code here."
 
   ;; Scroll compilation output to first error
   (setq compilation-scroll-output t)
-  (setq compilation-scroll-output 'first-error)
+  (setq compilation-scroll-output #'first-error)
 
   ;; TODO highlighting
   (defun highlight-todos ()
     (font-lock-add-keywords nil '(("\\<\\(NOTE\\|TODO\\|HACK\\|BUG\\):" 1 font-lock-warning-face t))))
-  (add-hook 'prog-mode-hook 'highlight-todos)
+  (add-hook 'prog-mode-hook #'highlight-todos)
 
   ;; Autocomplete docstring tooltips
   (setq auto-completion-enable-help-tooltip t)
@@ -377,18 +377,18 @@ you should place you code here."
   (setq create-lockfiles nil)
 
   ;; Quick character jump
-  (spacemacs/set-leader-keys "SPC" 'avy-goto-char-timer)
+  (spacemacs/set-leader-keys "SPC" #'avy-goto-char-timer)
 
   ;; Clang-format style
   (setq clang-format-style "{BasedOnStyle: LLVM, AlignEscapedNewlinesLeft: true, AlignTrailingComments: true, AllowAllParametersOfDeclarationOnNextLine: true, AllowShortBlocksOnASingleLine: false, AllowShortFunctionsOnASingleLine: None, AllowShortIfStatementsOnASingleLine: false, AllowShortLoopsOnASingleLine: false, AlwaysBreakTemplateDeclarations: true, BreakBeforeBraces: Allman, ColumnLimit: 0, IndentCaseLabels: true, IndentWidth: 4, MaxEmptyLinesToKeep: 2, SpaceBeforeAssignmentOperators: true, SpaceBeforeParens: ControlStatements, Standard: Auto, TabWidth: 4}")
 
   ;; Bind clang-format functions
   (spacemacs/set-leader-keys-for-major-mode 'c-mode
-    "fb" 'clang-format-buffer
-    "fr" 'clang-format-region)
+    "fb" #'clang-format-buffer
+    "fr" #'clang-format-region)
   (spacemacs/set-leader-keys-for-major-mode 'c++-mode
-    "fb" 'clang-format-buffer
-    "fr" 'clang-format-region)
+    "fb" #'clang-format-buffer
+    "fr" #'clang-format-region)
 
   ;; Windows cmder bindings
   (defun start-cmder ()
@@ -397,7 +397,7 @@ you should place you code here."
     (let ((proc (start-process "cmder" nil "cmder.exe" "/START" default-directory)))
       (set-process-query-on-exit-flag proc nil)))
 
-  (spacemacs/set-leader-keys "oc" 'start-cmder)
+  (spacemacs/set-leader-keys "oc" #'start-cmder)
 
   ;; Windows explorer bindings
   (defun start-explorer ()
@@ -406,7 +406,7 @@ you should place you code here."
     (let ((proc (start-process "explorer" nil "explorer.exe" ".")))
       (set-process-query-on-exit-flag proc nil)))
 
-  (spacemacs/set-leader-keys "oe" 'start-explorer)
+  (spacemacs/set-leader-keys "oe" #'start-explorer)
 
   ;; Windows performance improvement /I think/
   (setq w32-get-true-file-attributes nil)
@@ -435,10 +435,10 @@ you should place you code here."
   (setq company-idle-delay 0.1)
 
   ;; Vimish fold bindings
-  (define-key evil-normal-state-map "zc" 'vimish-fold)
-  (define-key evil-normal-state-map "zC" 'vimish-fold-avy)
-  (define-key evil-normal-state-map "za" 'vimish-fold-toggle)
-  (define-key evil-normal-state-map "zd" 'vimish-fold-delete)
+  (define-key evil-normal-state-map "zc" #'vimish-fold)
+  (define-key evil-normal-state-map "zC" #'vimish-fold-avy)
+  (define-key evil-normal-state-map "za" #'vimish-fold-toggle)
+  (define-key evil-normal-state-map "zd" #'vimish-fold-delete)
 
   ;; Tern fix
   (with-eval-after-load 'tern
