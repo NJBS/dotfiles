@@ -443,7 +443,11 @@ you should place you code here."
   (with-eval-after-load 'tern
     (setq tern-command '("tern")))
 
+  ;; Increase GC to 200MB
   (setq gc-cons-threshold 200000000)
+
+  ;; Global basic auto complete
+  (global-company-mode)
   ;; Guess indentation
   (dtrt-indent-mode)
 
