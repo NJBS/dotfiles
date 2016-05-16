@@ -448,6 +448,7 @@ you should place you code here."
 
   ;; Global basic auto complete
   (global-company-mode)
+
   ;; Guess indentation
   (dtrt-indent-mode)
 
@@ -456,6 +457,12 @@ you should place you code here."
   ;;   (interactive)
   ;;   (setq dtrt-indent-mode-line-info (format "Spaces: %d" evil-shift-width)))
   ;; (add-hook 'buffer-list-update-hook 'NJBS/format-indent-width)
+
+  ;; Stop dtrt-indent from cluttering modeline
+  (add-hook 'buffer-list-update-hook (lambda () (setq dtrt-indent-mode-line-info nil)))
+
+  ;; I don't use bidi fonts so turning them off might improve render times
+  (setq bidi-display-reordering nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
