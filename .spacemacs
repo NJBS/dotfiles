@@ -418,13 +418,13 @@ you should place you code here."
   (setq python-shell-prompt-detect-failure-warning nil)
 
   ;; Quick ediff
-  (spacemacs/set-leader-keys "od" 'ediff-buffers)
+  (spacemacs/set-leader-keys "od" #'ediff-buffers)
 
   ;; Stop spacemacs from restoring windows when finished ediffing
   (remove-hook 'ediff-quit-hook #'winner-undo)
 
   ;; Quick server restart
-  (spacemacs/set-leader-keys "os" 'server-start)
+  (spacemacs/set-leader-keys "os" #'server-start)
 
   ;; Java eclim setup
   (setq eclim-eclipse-dirs "C:/eclipse")
