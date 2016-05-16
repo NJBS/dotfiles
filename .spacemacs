@@ -390,22 +390,22 @@ you should place you code here."
     "fr" #'clang-format-region)
 
   ;; Windows cmder bindings
-  (defun start-cmder ()
+  (defun NJBS/start-cmder ()
     "Start cmder in current directory"
     (interactive)
     (let ((proc (start-process "cmder" nil "cmder.exe" "/START" default-directory)))
       (set-process-query-on-exit-flag proc nil)))
 
-  (spacemacs/set-leader-keys "oc" #'start-cmder)
+  (spacemacs/set-leader-keys "oc" #'NJBS/start-cmder)
 
   ;; Windows explorer bindings
-  (defun start-explorer ()
+  (defun NJBS/start-explorer ()
     "Start explorer in current directory"
     (interactive)
     (let ((proc (start-process "explorer" nil "explorer.exe" ".")))
       (set-process-query-on-exit-flag proc nil)))
 
-  (spacemacs/set-leader-keys "oe" #'start-explorer)
+  (spacemacs/set-leader-keys "oe" #'NJBS/start-explorer)
 
   ;; Windows performance improvement /I think/
   (setq w32-get-true-file-attributes nil)
