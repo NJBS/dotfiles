@@ -444,6 +444,14 @@ you should place you code here."
     (setq tern-command '("tern")))
 
   (setq gc-cons-threshold 200000000)
+  ;; Guess indentation
+  (dtrt-indent-mode)
+
+  ;; Display current indentation in modeline
+  ;; (defun NJBS/format-indent-width ()
+  ;;   (interactive)
+  ;;   (setq dtrt-indent-mode-line-info (format "Spaces: %d" evil-shift-width)))
+  ;; (add-hook 'buffer-list-update-hook 'NJBS/format-indent-width)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
