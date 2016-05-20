@@ -349,6 +349,11 @@ you should place you code here."
   ;; Use ctrl + l to complete exclusively
   (setq auto-completion-return-key-behavior nil)
   (setq auto-completion-tab-key-behavior nil)
+  (define-key company-active-map (kbd "TAB") nil)
+  (define-key company-active-map (kbd "<tab>") nil)
+  (define-key company-active-map (kbd "RET") nil)
+  (define-key company-active-map (kbd "<return>") nil)
+  (setq tab-always-indent t)
 
   ;; Turn off Latex auto formating source code
   (setq font-latex-fontify-script nil)
