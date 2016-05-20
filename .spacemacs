@@ -47,7 +47,7 @@ values."
      github
      gtags
      html
-     imenu-list
+     ;; imenu-list
      java
      javascript
      latex
