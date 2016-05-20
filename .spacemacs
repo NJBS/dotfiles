@@ -58,10 +58,10 @@ values."
      racket
      ranger
      rust
-     semantic
+     ;; semantic
      shell
      shell-scripts
-     spacemacs-helm
+     helm
      syntax-checking
      version-control
      )
