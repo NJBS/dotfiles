@@ -28,10 +28,10 @@ values."
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
-   ;; List of configuration layers to load. If it is the symbol `all' instead
-   ;; of a list then all discovered layers will be installed.
+   ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     sml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -72,10 +72,14 @@ values."
    dotspacemacs-additional-packages '(vimish-fold dtrt-indent)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(yasnippet)
-   ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
-   ;; are declared in a layer which is not a member of
-   ;; the list `dotspacemacs-configuration-layers'. (default t)
-   dotspacemacs-delete-orphan-packages t))
+   ;; Defines the behaviour of Spacemacs when downloading packages.
+   ;; Possible values are `used', `used-but-keep-unused' and `all'. `used' will
+   ;; download only explicitly used packages and remove any unused packages as
+   ;; well as their dependencies. `used-but-keep-unused' will download only the
+   ;; used packages but won't delete them if they become unused. `all' will
+   ;; download all the packages regardless if they are used or not and packages
+   ;; won't be deleted by Spacemacs. (default is `used')
+   dotspacemacs-download-packages 'used))
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -141,7 +145,7 @@ values."
                                :size ,(if (> (x-display-pixel-height) 1080) 28 14) ;; 14 for 1080p, 28 for surface
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.0)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -165,6 +169,9 @@ values."
    dotspacemacs-distinguish-gui-tab t
    ;; If non nil `Y' is remapped to `y$' in Evil states. (default nil)
    dotspacemacs-remap-Y-to-y$ t
+   ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
+   ;; there. (default t)
+   dotspacemacs-retain-visual-state-on-shift t
    ;; If non nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
    ;; (default nil)
    dotspacemacs-ex-substitute-global nil
@@ -242,6 +249,9 @@ values."
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
    dotspacemacs-line-numbers nil
+   ;; Code folding method. Possible values are `evil' and `origami'.
+   ;; (default 'evil)
+   dotspacemacs-folding-method 'origami
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
@@ -439,10 +449,10 @@ you should place you code here."
   (setq company-idle-delay 0.1)
 
   ;; Vimish fold bindings
-  (define-key evil-normal-state-map "zc" #'vimish-fold)
-  (define-key evil-normal-state-map "zC" #'vimish-fold-avy)
-  (define-key evil-normal-state-map "za" #'vimish-fold-toggle)
-  (define-key evil-normal-state-map "zd" #'vimish-fold-delete)
+  ;; (define-key evil-normal-state-map "zc" #'vimish-fold)
+  ;; (define-key evil-normal-state-map "zC" #'vimish-fold-avy)
+  ;; (define-key evil-normal-state-map "za" #'vimish-fold-toggle)
+  ;; (define-key evil-normal-state-map "zd" #'vimish-fold-delete)
 
   ;; Tern fix
   (with-eval-after-load 'tern
