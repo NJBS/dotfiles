@@ -1,5 +1,5 @@
 # dotfiles
-A collection of my dotfiles.
+A collection of my (mostly outdated) dotfiles.
 
 ![clean](http://i.imgur.com/c0hvXJi.png)
 clean
