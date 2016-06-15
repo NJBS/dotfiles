@@ -31,7 +31,6 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     sml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -41,6 +40,7 @@ values."
      ;; themes-megapack
      auto-completion
      better-defaults
+     bibtex
      c-c++
      emacs-lisp
      git
@@ -62,6 +62,7 @@ values."
      shell
      shell-scripts
      helm
+     sml
      syntax-checking
      version-control
      )
@@ -303,7 +304,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
 
   ;; Tab-width
-  (setq indent-tabs-mode nil)
+  (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
 
   ;; Have projectile use linux find
@@ -313,7 +314,8 @@ you should place you code here."
   (setq projectile-enable-caching t)
 
   ;; C/C++ style
-  (setq c-default-style "bsd" c-basic-offset 4)
+  (setq c-default-style "bsd"
+        c-basic-offset 4)
 
   ;; Clang support (clang-format & clang-complete snippets)
   (setq c-c++-enable-clang-support t)
@@ -468,16 +470,19 @@ you should place you code here."
   (dtrt-indent-mode)
 
   ;; Display current indentation in modeline
-  ;; (defun NJBS/format-indent-width ()
-  ;;   (interactive)
-  ;;   (setq dtrt-indent-mode-line-info (format "Spaces: %d" evil-shift-width)))
-  ;; (add-hook 'buffer-list-update-hook 'NJBS/format-indent-width)
+  (defun NJBS/format-indent-width ()
+    (interactive)
+    (setq dtrt-indent-mode-line-info (format "Spaces: %d" evil-shift-width)))
+  (add-hook 'find-file-hook 'NJBS/format-indent-width)
 
   ;; Stop dtrt-indent from cluttering modeline
-  (add-hook 'buffer-list-update-hook (lambda () (setq dtrt-indent-mode-line-info nil)))
+  ;; (add-hook 'buffer-list-update-hook (lambda () (setq dtrt-indent-mode-line-info nil)))
 
   ;; I don't use bidi fonts so turning them off might improve render times
   (setq bidi-display-reordering nil)
+
+  ;; Faster scrolling with C-e/C-y
+  (setq-default evil-scroll-line-count 3)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
