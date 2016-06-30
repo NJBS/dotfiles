@@ -451,10 +451,10 @@ you should place you code here."
   (setq company-idle-delay 0.1)
 
   ;; Vimish fold bindings
-  ;; (define-key evil-normal-state-map "zc" #'vimish-fold)
-  ;; (define-key evil-normal-state-map "zC" #'vimish-fold-avy)
-  ;; (define-key evil-normal-state-map "za" #'vimish-fold-toggle)
-  ;; (define-key evil-normal-state-map "zd" #'vimish-fold-delete)
+  (define-key evil-normal-state-map "zc" #'vimish-fold)
+  (define-key evil-normal-state-map "zC" #'vimish-fold-avy)
+  (define-key evil-normal-state-map "za" #'vimish-fold-toggle)
+  (define-key evil-normal-state-map "zd" #'vimish-fold-delete)
 
   ;; Tern fix
   (with-eval-after-load 'tern
@@ -469,14 +469,8 @@ you should place you code here."
   ;; Guess indentation
   (dtrt-indent-mode)
 
-  ;; Display current indentation in modeline
-  (defun NJBS/format-indent-width ()
-    (interactive)
-    (setq dtrt-indent-mode-line-info (format "Spaces: %d" evil-shift-width)))
-  (add-hook 'find-file-hook 'NJBS/format-indent-width)
-
   ;; Stop dtrt-indent from cluttering modeline
-  ;; (add-hook 'buffer-list-update-hook (lambda () (setq dtrt-indent-mode-line-info nil)))
+  (add-hook 'buffer-list-update-hook (lambda () (setq dtrt-indent-mode-line-info nil)))
 
   ;; I don't use bidi fonts so turning them off might improve render times
   (setq bidi-display-reordering nil)
@@ -484,6 +478,5 @@ you should place you code here."
   ;; Faster scrolling with C-e/C-y
   (setq-default evil-scroll-line-count 3)
   )
-
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
