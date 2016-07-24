@@ -70,7 +70,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(vimish-fold dtrt-indent)
+   dotspacemacs-additional-packages '(vimish-fold dtrt-indent company-coq)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(yasnippet)
    ;; Defines the behaviour of Spacemacs when downloading packages.
@@ -477,5 +477,10 @@ you should place you code here."
   ;; Faster scrolling with C-e/C-y
   (setq-default evil-scroll-line-count 3)
   )
+  ;; Setup company-coq and proof general
+  (load "C:/PG/generic/proof-site")
+  (add-hook 'coq-mode-hook #'company-coq-mode)
+  (setq company-coq-disabled-features '(prettify-symbols hello))
+)
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
