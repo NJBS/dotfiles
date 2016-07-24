@@ -496,7 +496,10 @@ you should place you code here."
   ;; Setup company-coq and proof general
   (load "C:/PG/generic/proof-site")
   (add-hook 'coq-mode-hook #'company-coq-mode)
-  (setq company-coq-disabled-features '(prettify-symbols hello))
+  (setq company-coq-disabled-features '(prettify-symbols hello smart-subscripts))
+  (setq proof-next-command-insert-space nil)
+  (with-eval-after-load 'proof-script
+    (defun proof-script-next-command-advance ()))
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
