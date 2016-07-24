@@ -497,6 +497,7 @@ you should place you code here."
   (load "C:/PG/generic/proof-site")
   (add-hook 'coq-mode-hook #'company-coq-mode)
   (setq proof-splash-seen t)
+  (setq proof-script-fly-past-comments t)
   (setq company-coq-disabled-features '(prettify-symbols hello smart-subscripts))
   (setq proof-next-command-insert-space nil)
   (with-eval-after-load 'proof-script
