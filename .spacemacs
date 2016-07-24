@@ -504,7 +504,6 @@ you should place you code here."
     (defun proof-script-next-command-advance ()))
   (add-hook 'proof-mode-hook #'proof-electric-terminator-toggle)
   (spacemacs|diminish company-coq-mode)
-  (spacemacs|diminish company-coq-mode)
   (spacemacs|diminish yas-minor-mode)
   (spacemacs|diminish proof-active-buffer-fake-minor-mode)
   (spacemacs|diminish outline-minor-mode)
