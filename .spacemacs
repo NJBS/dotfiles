@@ -500,6 +500,7 @@ you should place you code here."
   (setq proof-next-command-insert-space nil)
   (with-eval-after-load 'proof-script
     (defun proof-script-next-command-advance ()))
+  (add-hook 'proof-mode-hook #'proof-electric-terminator-toggle)
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
