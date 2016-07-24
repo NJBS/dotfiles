@@ -501,6 +501,7 @@ you should place you code here."
   (with-eval-after-load 'proof-script
     (defun proof-script-next-command-advance ()))
   (add-hook 'proof-mode-hook #'proof-electric-terminator-toggle)
+  (spacemacs|diminish company-coq-mode)
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
