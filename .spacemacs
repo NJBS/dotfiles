@@ -479,7 +479,20 @@ you should place you code here."
 
   ;; Faster scrolling with C-e/C-y
   (setq-default evil-scroll-line-count 3)
-  )
+
+  ;; Stop space-doc from centering documentation
+  (setq spacemacs-space-doc-modificators
+        '(spacemacs//space-doc-org-indent-mode
+          spacemacs//space-doc-view-mode
+          spacemacs//space-doc-hide-line-numbers
+          spacemacs//space-doc-emphasis-overlays
+          spacemacs//space-doc-meta-tags-overlays
+          spacemacs//space-doc-link-protocol
+          spacemacs//space-doc-org-block-line-face-remap
+          spacemacs//space-doc-org-kbd-face-remap
+          spacemacs//space-doc-resize-inline-images
+          spacemacs//space-doc-advice-org-do-emphasis-faces))
+
   ;; Setup company-coq and proof general
   (load "C:/PG/generic/proof-site")
   (add-hook 'coq-mode-hook #'company-coq-mode)
