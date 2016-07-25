@@ -493,6 +493,12 @@ you should place you code here."
           spacemacs//space-doc-resize-inline-images
           spacemacs//space-doc-advice-org-do-emphasis-faces))
 
+  ;; No need for these in the modeline
+  (spacemacs|diminish ggtags-mode)
+  (spacemacs|diminish which-key-mode)
+  (spacemacs|diminish helm-gtags-mode)
+  (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
+
   ;; Setup company-coq and proof general
   (load "C:/PG/generic/proof-site")
   (add-hook 'coq-mode-hook #'company-coq-mode)
