@@ -515,6 +515,21 @@ you should place you code here."
   (spacemacs|diminish outline-minor-mode)
   (spacemacs|diminish holes-mode)
   (spacemacs|diminish hs-minor-mode)
+
+  (setq org-capture-templates
+        '(("t" "Todo" entry (file+headline "e:/Documents/Dropbox/todolist.org" "Tasks")
+           "* TODO %?\n")
+          ("e" "Entertainment")
+          ("eb" "Book" entry (file+olp "e:/Documents/Dropbox/todolist.org" "Entertainment" "Books")
+           "* TODO %?\n")
+          ("eb" "Game" entry (file+olp "e:/Documents/Dropbox/todolist.org" "Entertainment" "Games")
+           "* TODO %?\n")
+          ("em" "Movie" entry (file+olp "e:/Documents/Dropbox/todolist.org" "Entertainment" "Movies")
+           "* TODO %?\n")
+          ("et" "Television Show" entry (file+olp "e:/Documents/Dropbox/todolist.org" "Entertainment" "Television Shows")
+           "* TODO %?\n")
+          ))
+  (add-hook 'org-capture-mode-hook 'evil-insert-state)
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
