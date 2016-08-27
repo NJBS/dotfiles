@@ -41,6 +41,7 @@ values."
      auto-completion
      better-defaults
      bibtex
+     coq
      c-c++
      emacs-lisp
      git
@@ -65,13 +66,13 @@ values."
      ;; ivy
      ;; sml
      syntax-checking
-     version-control
+     ;; version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(vimish-fold dtrt-indent company-coq)
+   dotspacemacs-additional-packages '(vimish-fold dtrt-indent)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -140,10 +141,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light
-                         leuven
-                         monokai
-                         zenburn)
+                         spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -512,21 +510,11 @@ you should place you code here."
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
 
   ;; Setup company-coq and proof general
-  (load "C:/PG/generic/proof-site")
-  (add-hook 'coq-mode-hook #'company-coq-mode)
-  (setq proof-splash-seen t)
-  (setq proof-script-fly-past-comments t)
-  (setq company-coq-disabled-features '(prettify-symbols hello smart-subscripts))
   (setq proof-next-command-insert-space nil)
   (with-eval-after-load 'proof-script
     (defun proof-script-next-command-advance ()))
-  (add-hook 'proof-mode-hook #'proof-electric-terminator-toggle)
-  (spacemacs|diminish company-coq-mode)
-  (spacemacs|diminish yas-minor-mode)
-  (spacemacs|diminish proof-active-buffer-fake-minor-mode)
-  (spacemacs|diminish outline-minor-mode)
-  (spacemacs|diminish holes-mode)
-  (spacemacs|diminish hs-minor-mode)
+  (with-eval-after-load 'company-coq
+    (add-to-list 'company-coq-disabled-features 'prettify-symbols))
 
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline "e:/Documents/Dropbox/todolist.org" "Tasks")
